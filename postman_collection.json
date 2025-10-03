@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "ESP Integration API",
+    "description": "REST API for Mailchimp and GetResponse integrations",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Create Mailchimp Integration",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"provider\": \"mailchimp\",\n  \"apiKey\": \"your-mailchimp-api-key-here\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/integrations/esp",
+          "host": ["{{base_url}}"],
+          "path": ["api", "integrations", "esp"]
+        }
+      }
+    },
+    {
+      "name": "Create GetResponse Integration",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"provider\": \"getresponse\",\n  \"apiKey\": \"your-getresponse-api-key-here\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/integrations/esp",
+          "host": ["{{base_url}}"],
+          "path": ["api", "integrations", "esp"]
+        }
+      }
+    },
+    {
+      "name": "Get All Lists",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/integrations/esp/lists",
+          "host": ["{{base_url}}"],
+          "path": ["api", "integrations", "esp", "lists"]
+        }
+      }
+    },
+    {
+      "name": "Get Lists by Provider",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/integrations/esp/lists?provider=mailchimp",
+          "host": ["{{base_url}}"],
+          "path": ["api", "integrations", "esp", "lists"],
+          "query": [
+            {
+              "key": "provider",
+              "value": "mailchimp"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Integrations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/integrations/esp",
+          "host": ["{{base_url}}"],
+          "path": ["api", "integrations", "esp"]
+        }
+      }
+    },
+    {
+      "name": "Test Integration",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/integrations/esp/{{integration_id}}/test",
+          "host": ["{{base_url}}"],
+          "path": ["api", "integrations", "esp", "{{integration_id}}", "test"]
+        }
+      }
+    },
+    {
+      "name": "Delete Integration",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/integrations/esp/{{integration_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "integrations", "esp", "{{integration_id}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "integration_id",
+      "value": ""
+    }
+  ]
+}
