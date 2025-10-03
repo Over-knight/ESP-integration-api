@@ -9,6 +9,12 @@ COPY package*.json ./
 # Install dependencies
 RUN npm ci --only=production && npm cache clean --force
 
+# Copy all source files
+COPY . .
+
+# Build the application
+RUN npm run build
+
 # Copy built application
 COPY dist/ ./dist/
 
